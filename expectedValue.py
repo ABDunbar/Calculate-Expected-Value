@@ -45,7 +45,7 @@ def freqCount():
     """
     # Creates frequency count 
     """
-    freq_count = np.histogram(depths, bins=len(vdict))
+    freq_count = np.histogram(values, bins=len(vdict))
 
     return freq_count
 
@@ -63,10 +63,10 @@ def freqProb():
     """
     
     """
-    freq_prob = [depths_zero/depths_total]
+    freq_prob = [values_zero/values_total]
     freq_count = freqCount()
     for i in range(10):
-        freq_prob.append(freq_count[0][i] / depths_total)
+        freq_prob.append(freq_count[0][i] / values_total)
         
     return freq_prob
 
@@ -74,16 +74,16 @@ def expValues():
     freq_values = freqValues()
 
     # Multiply the count per bound with the probability
-    exp_values = [((freq_values[i][0] * freq_values[i][1])/(depths_zero + depths_nonzero)) for i in range(len(freq_values))]
+    exp_values = [((freq_values[i][0] * freq_values[i][1])/(values_zero + values_nonzero)) for i in range(len(freq_values))]
 
     return exp_values
 
 vdict = loadBounds()
 values = loadValues()
 
-depths_zero = 2500#input("Number of non-inundated grid points: ")
-depths_nonzero = len(values)
-depths_total = depths_zero + depths_nonzero
+values_zero = 2500#input("Number of non-inundated grid points: ")
+values_nonzero = len(values)
+values_total = values_zero + values_nonzero
 
 
 exp_value = expectedValue()

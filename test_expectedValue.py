@@ -18,14 +18,14 @@ class TestExpValue(unittest.TestCase):
         """
         pass
     
-    def test_loadDepths(self):
+    def test_loadValues(self):
         """
         Test: All depths are equal to or greater than zero
         """
-        depths = expectedValue.loadDepths()
-        self.assertGreaterEqual(depths.all(), 0)
+        values = expectedValue.loadValues()
+        self.assertGreaterEqual(values.all(), 0)
     
-    def test_loadVCurve(self):
+    def test_loadBounds(self):
         """
         Test: 1. depth intervals, 2. increasing damage amount
         """
